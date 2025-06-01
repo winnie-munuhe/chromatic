@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chromatic Collective - Connect, Explore, Share</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 </head>
+
 <body>
-    <nav>
+
+    <nav class="chromatic-nav">
         <ul>
             <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
             <li><a href="#">Community</a></li>
-            <li><a href="#">Exhibitions</a></li>
         </ul>
-        <span class="logo">Chromatic Collective</span>
+        <a href="index.html" class="logo-link">
+            <img src="asset/chromatic.jpg" alt="Chromatic Collective Logo">
+        </a>
         <ul>
             <li><a href="#">Showcase</a></li>
             <li><a href="#">Resources</a></li>
@@ -21,117 +27,390 @@
         </ul>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Connect, Explore, Share Your Art</h1>
-            <p>Join a vibrant collective of artists, discover inspiring exhibitions, and showcase your creative expression with the world.</p>
-            <button class="button primary">Become a Member</button>
+    <section class="mental-wellness-section">
+        <div class="wellness-content-wrapper">
+            <h2>Nourish Your Creative Mind and Soul</h2>
+            <p>At Chromatic Collective, we understand the unique journey of an artist. Find resources and community
+                support to foster mental well-being, overcome creative blocks, and maintain your artistic balance.</p>
+            <a href="#" class="button secondary">Explore Wellness Resources</a>
         </div>
-    </header>
-
+        <div class="wellness-abstract-elements">
+            <img src="asset/art.jpg" alt="Abstract shapes and emotional characters representing creative well-being">
+        </div>
+    </section>
 
     <section class="connect-section">
         <div class="connect-content">
             <span class="section-subtitle">OPPORTUNITIES</span>
             <h2>We Help You Prioritize Your Artistic Growth</h2>
-            <p>Browse calls for artists, explore inspiring workshops, and start your creative journey with valuable resources.</p>
+            <p>Browse calls for artists, explore inspiring workshops, and start your creative journey with valuable
+                resources.</p>
             <button class="button secondary">Find Opportunities</button>
         </div>
-            <div class="connect-image">
-                <img src="asset/images/creatives.jpg" alt="Abstract image representing artistic opportunities">
-            </div>
-            </div>
-        </section>
+        <div class="connect-image">
+            <img src="asset/star.jpg" alt="Abstract image representing artistic opportunities">
+        </div>
+    </section>
 
-        <section class="intro">
-            <span class="section-label">OUR PLATFORM</span>
-            <h2>Your Canvas Awaits</h2>
-            <p class="section-description">Discover a vibrant space to connect with fellow artists, explore inspiring exhibitions, and share your unique creative expression with the world.</p>
-        </section>
+    <section class="intro-path-section">
+        <span class="section-label">OUR SERVICES</span>
+        <h2>Your Path to Artistic Growth</h2>
+        <p class="section-description">Discover expert guidance, valuable resources, and a supportive community to help
+            you elevate your artistic journey.</p>
+    </section>
 
-        <section class="artist-features-section">
-            <div class="artist-feature-card left">
-                <div class="card-content">
-                    <h3>Showcase Your Art</h3>
-                    <p>Create your personalized online gallery and share your unique creations with a global audience.</p>
-                    <a href="#" class="button secondary">Start Showcasing</a>
-                </div>
-                <div class="card-visual-left"></div>
+    <section class="artist-focus-section-neutral">
+        <div class="focus-card-neutral left">
+            <div class="card-content-neutral">
+                <h3>Showcase Your Portfolio</h3>
+                <p>Create a stunning online portfolio to display your artwork and attract potential clients and
+                    collaborators. Establish your professional presence and unlock new opportunities for commissions, exhibitions, and partnerships. It's your central hub for growth, networking, and career advancement in the global art market</p>
+                <a href="#" class="button-neutral">Create Your Portfolio</a>
             </div>
-            <div class="artist-feature-card right">
-                <div class="card-content">
-                    <h3>Connect & Collaborate</h3>
-                    <p>Join a vibrant community of fellow artists, share ideas, and find opportunities for collaboration.</p>
-                    <a href="#" class="button secondary">Join the Community</a>
-                </div>
-                <div class="card-visual-right"></div>
-            </div>
-        </section>
+        </div>
 
-        <section class="wellness-coaching-section">
-            <div class="wellness-coaching-content">
-                <h3>Artist Development Coaching</h3>
-                <p>Personalized guidance to help you refine your artistic skills, navigate the art world, and achieve your creative goals.</p>
-                <p>Our experienced coaches support you in building sustainable practices for artistic growth, career development, and overall well-being as an artist.</p>
-                <a href="#" class="button secondary">Learn More</a>
+        <div class="focus-card-neutral right">
+            <div class="card-content-neutral">
+                <h3>Connect with the Community</h3>
+                <p>Join a vibrant network of artists, share your inspirations, and find support for your creative
+                    journey.Deepen your craft through collaborative projects and expert feedback, while accessing exclusive resources to push your boundaries. This collective spirit fosters an environment where every artist can thrive and evolve.</p>
+                <a href="#" class="button-neutral">Join the Community</a>
             </div>
-            <div class="wellness-coaching-image">
-                <img src="asset/images/reflection.jpg" alt="Stylized illustration of an artist reflecting.">
-            </div>
-        </section>
+        </div>
+    </section>
+    <section class="artist-development-coaching-section">
+        <div class="artist-dev-coaching-content">
+            <h3>Artist Development Coaching</h3>
+            <p>Personalized guidance to help you refine your artistic skills, navigate the art world, and achieve your
+                creative goals.</p>
+            <p>Our experienced coaches support you in building sustainable practices for artistic growth, career
+                development, and overall well-being as an artist.</p>
+            <a href="#" class="button-neutral">Learn More</a>
+        </div>
+        <div class="artist-dev-coaching-image">
+            <img src="asset/development.jpg" alt="Illustration of an artist receiving coaching or guidance.">
+        </div>
+    </section>
 
-        <section class="testimonials-section">
-            <div class="testimonials-header">
-                <span class="section-label">TESTIMONIALS</span>
-                <h2>What Our Artists Are Saying</h2>
-                <p class="section-intro">Hear directly from the vibrant community of artists who have found their home and voice with the Chromatic Collective.</p>
+    <section class="testimonials-two-card-section">
+        <div class="testimonials-intro-panel">
+            <span class="section-label">TESTIMONIALS</span>
+            <h2>What Our Artists Are Saying</h2>
+            <p class="section-intro">Hear directly from the vibrant community of artists who have found their home and
+                voice with the Chromatic Collective.</p>
+            <div class="slider-nav-arrows">
+                <button class="slider-arrow prev-arrow">&larr;</button>
+                <button class="slider-arrow next-arrow">&rarr;</button>
             </div>
-        
-            <div class="testimonial-scroller-wrapper">
-                <div class="testimonial-quotes-container">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The Chromatic Collective provided the perfect space to finally share my artwork with a supportive community. I've received valuable feedback and even sold a piece! It's been a game-changer for my confidence."</p>
+        </div>
+
+        <div class="testimonials-slider-track-container">
+            <div class="testimonials-slider-track">
+                <div class="testimonial-group">
+                    <div class="testimonial-card-item">
+                        <p class="testimonial-quote">"The Chromatic Collective provided the perfect space to finally
+                            share my artwork with a supportive community. I've received valuable feedback and even sold
+                            a piece! It's been a game-changer for my confidence."</p>
+                        <div class="testimonial-author-info">
+                            <p class="author-name">Evelyn M</p>
+                            <p class="author-title">Painter, 28</p>
+                        </div>
                     </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Finding collaborative partners used to be a struggle. Through the Collective, I connected with another artist, and we're now working on an exciting joint project. The opportunities here are fantastic."</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The workshops and resources offered by the Chromatic Collective have truly helped me refine my skills and understand the business side of art. I feel much more equipped to navigate my artistic career."</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The virtual galleries are stunning and so easy to set up. My art has reached audiences I never thought possible, and the community is incredibly encouraging."</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"As a new artist, the coaching program was invaluable. It helped me define my artistic voice and build a strong portfolio. I'm so grateful for the personalized support."</p>
-                    </div>
-                </div>
-        
-                <div class="testimonial-authors-container">
-                    <div class="testimonial-author-card">
-                        <img src="assets/images/author-evelyn.jpg" alt="Portrait of Evelyn M" class="author-avatar">
-                        <p class="author-name">Evelyn M</p>
-                        <p class="author-detail">28, Painter</p>
-                    </div>
-                    <div class="testimonial-author-card">
-                        <img src="assets/images/author-carlos.jpg" alt="Portrait of Carlos P" class="author-avatar">
-                        <p class="author-name">Carlos P</p>
-                        <p class="author-detail">35, Digital Artist</p>
-                    </div>
-                    <div class="testimonial-author-card">
-                        <img src="assets/images/author-aisha.jpg" alt="Portrait of Aisha K" class="author-avatar">
-                        <p class="author-name">Aisha K</p>
-                        <p class="author-detail">42, Sculptor</p>
-                    </div>
-                    <div class="testimonial-author-card">
-                        <img src="assets/images/author-liam.jpg" alt="Portrait of Liam R" class="author-avatar">
-                        <p class="author-name">Liam R</p>
-                        <p class="author-detail">22, Illustrator</p>
+
+                    <div class="testimonial-card-item">
+                        <p class="testimonial-quote">"Finding collaborative partners used to be a struggle. Through the
+                            Collective, I connected with another artist, and we're now working on an exciting joint
+                            project. The opportunities here are fantastic."</p>
+                        <div class="testimonial-author-info">
+                            <p class="author-name">Carlos P</p>
+                            <p class="author-title">Digital Artist, 35</p>
+                        </div>
                     </div>
                 </div>
-        
-                <div class="slider-controls">
-                    <button class="slider-button prev">&larr;</button>
-                    <button class="slider-button next">&rarr;</button>
+
+                <div class="testimonial-group">
+                    <div class="testimonial-card-item">
+                        <p class="testimonial-quote">"The workshops and resources offered by the Chromatic Collective
+                            have truly helped me refine my skills and understand the business side of art. I feel much
+                            more equipped to navigate my artistic career."</p>
+                        <div class="testimonial-author-info">
+                            <p class="author-name">Aisha K</p>
+                            <p class="author-title">Sculptor, 42</p>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card-item">
+                        <p class="testimonial-quote">"The virtual galleries are stunning and so easy to set up. My art
+                            has reached audiences I never thought possible, and the community is incredibly
+                            encouraging."</p>
+                        <div class="testimonial-author-info">
+                            <p class="author-name">Liam R</p>
+                            <p class="author-title">Illustrator, 22</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="our-partners-section-left-text">
+        <div class="partners-content-left">
+            <span class="section-label">OUR PARTNERS</span>
+            <!-- <h2>Collaborating for Creativity</h2>
+            <p class="section-description">We're proud to partner with leading platforms and organizations that support
+                artists and creative professionals worldwide.</p> -->
+        </div>
+        <div class="partners-logos-right">
+            <div class="logo-item">
+                <img src="asset/adobe.jpg" alt="Adobe Logo">
+            </div>
+            <div class="logo-item">
+                <img src="asset/wacom.jpg" alt="Wacom Logo">
+            </div>
+            <div class="logo-item">
+                <img src="asset/artstation.jpg" alt="ArtStation Logo">
+            </div>
+            <div class="logo-item">
+                <img src="asset/skillshare.jpg" alt="Skillshare Logo">
+            </div>
+        </div>
+    </section>
+
+    <section class="resources-section">
+        <span class="section-label">EXPLORE & LEARN</span>
+        <h2>Resources for Artistic Growth</h2>
+        <p class="section-description">Dive into expert articles, practical guides, and valuable tools designed to fuel
+            your creative journey and enhance your skills.</p>
+    </section>
+
+    <section class="resource-cards-section-consistent">
+        <div class="resource-card-consistent">
+            <h3>Creative Articles & Insights</h3>
+            <p>Dive into expertly curated articles and thought leadership on artistic techniques, trends, and career
+                development.</p>
+            <a href="#" class="button-consistent">Explore</a>
+        </div>
+
+        <div class="resource-card-consistent">
+            <h3>Workshops & Masterclasses</h3>
+            <p>Participate in live and recorded sessions led by professional artists and industry experts to hone your
+                craft.</p>
+            <a href="#" class="button-consistent">Explore</a>
+        </div>
+
+        <div class="resource-card-consistent">
+            <h3>Artist Guides & Toolkits</h3>
+            <p>Access practical guides, templates, and essential toolkits designed to streamline your creative process
+                and business.</p>
+            <a href="#" class="button-consistent">Explore</a>
+        </div>
+    </section>
+
+    <section class="community-section">
+        <div class="community-content">
+            <span class="section-label">COMMUNITY</span>
+            <h2>You're Not Alone on This Artistic Journey</h2>
+            <p class="section-description">Connect with fellow artists, share experiences, collaborate on projects, and
+                find inspiration in a safe, supportive space.</p>
+            <a href="#" class="button-community">Join The Collective</a>
+        </div>
+        <div class="community-illustration">
+            <img src="asset/play.jpg" alt="Abstract shapes representing community connection and support.">
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="faq-columns">
+            <div class="faq-left-column">
+                <div class="faq-header-content">
+                    <span class="section-label">NEED HELP?</span>
+                    <h2>Frequently Asked Questions</h2>
+                    <p class="section-description">Find answers to common questions about the Chromatic Collective, our
+                        services, artistic support, and community engagement.</p>
+                </div>
+                <div class="faq-illustration">
+                    <img src="asset/faq.jpg" alt="Abstract illustration of ideas and support flowing from a head.">
                 </div>
             </div>
-        </section>
+
+            <div class="faq-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3>How do I join the Chromatic Collective?</h3>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>You can join the Chromatic Collective by visiting our "Community" page and clicking the "Join
+                            The Collective" button. You'll be guided through a simple registration process to create
+                            your artist profile.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3>Are there membership fees for the Collective?</h3>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>The Chromatic Collective offers both free and premium membership tiers. Our free tier
+                            provides access to basic resources and community features, while premium tiers unlock
+                            advanced workshops, exclusive resources, and portfolio features. Details can be found on our
+                            membership page.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3>What kind of artistic support does the Collective offer?</h3>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>We offer a wide range of support, including online workshops, masterclasses, curated articles
+                            on artistic techniques and career development, opportunities for collaboration, and a
+                            vibrant community forum for feedback and networking.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3>Can I showcase my artwork within the Collective?</h3>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Absolutely! All members have the ability to create a profile and showcase their portfolio.
+                            Premium members have access to enhanced gallery features and virtual exhibition
+                            opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3>Is there a moderation policy for the community forum?</h3>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Yes, we maintain a strict moderation policy to ensure a safe, respectful, and supportive
+                            environment for all artists. Our community guidelines are clearly outlined upon
+                            registration.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3>How can I get personalized coaching or mentorship?</h3>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>The Chromatic Collective offers personalized coaching and mentorship programs as part of our
+                            premium membership tiers or as standalone services. You can find more information and sign
+                            up on our coaching page.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support-section">
+        <div class="support-content">
+            <span class="section-label">GET IN TOUCH</span>
+            <h2>We're Here to Support You</h2>
+            <p class="section-description">Whether you have questions, need help getting started, or want to learn more
+                – reach out anytime.</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Details:</h2>
+                <div class="info-item">
+                    <span class="info-label">Email:</span>
+                    <a href="mailto:support@solus.com">chromatic@collective.com</a>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Phone:</span>
+                    <a href="tel:+1231234567890">+1 (23) 456-7890</a>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Address:</span>
+                    <span>124 Chromatic Rd, Calm City, LA 90210</span>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><img src="asset/fb.jpg" alt="Facebook"></a>
+                    <a href="#" aria-label="Instagram"><img src="asset/insta.jpg" alt="Instagram"></a>
+                    <a href="#" aria-label="WhatsApp"><img src="asset/wassup.jpg" alt="WhatsApp"></a>
+                </div>
+                <p class="response-time-note">We typically respond within 12 hours.</p>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <h2>Send Us a Message</h2>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="sr-only">Message</label>
+                        <textarea id="message" name="message" placeholder="Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+                <div id="formResponse" class="form-response-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-top-content">
+            <div class="footer-main-nav">
+                <div class="footer-nav-column company-info">
+                    <h3 class="footer-logo">Chromatic Collective</h3>
+                    <ul>
+                        <li><a href="#">Our Story & Mission</a></li>
+                        <li><a href="#">Membership Benefits</a></li>
+                        <li><a href="#">Meet the Curators</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Contact & Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-column links-social-legal">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#">Digital Art Galleries</a></li>
+                        <li><a href="#">Creative Workshops</a></li>
+                        <li><a href="#">Artist Spotlights</a></li>
+                        <li><a href="#">Learning Resources</a></li>
+                        <li><a href="#">The Collective Blog</a></li>
+                    </ul>
+                    <h4 class="legal-heading">Connect</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">WhatsApp</a></li>
+                    </ul>
+                    <h4 class="legal-heading">Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Preferences</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-cta-card">
+                <div class="cta-card-content">
+                    <h3>Unleash Your Creative Potential.</h3>
+                    <a href="#" class="btn cta-button">Join The Collective Now</a>
+                </div>
+                <div class="cta-card-illustration">
+                    <img src="asset/cta.jpg" alt="Abstract shapes and rainbow representing support and balance">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> Chromatic Collective. All Rights Reserved.</p>
+        </div>
+    </footer>
