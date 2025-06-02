@@ -1,0 +1,1992 @@
+/* Import Montserrat for Headings (using weights 700 and 900 for extra boldness) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
+
+/* Import Lato for Body Content (using regular 400 weight) */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+
+
+/* Apply Lato to the entire website for general content */
+body {
+    font-family: 'Lato', sans-serif; /* Lato as the primary font for body text */
+    line-height: 1.6; /* Good default for readability */
+    color: #333; /* Default text color */
+}
+
+/* Apply Montserrat and a bold weight to all headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* Montserrat for headings */
+    font-weight: 900; /* Makes headings extra bold */
+    color: #2c3e50; /* A darker color for headings, matching your previous styles */
+}
+
+/* --- Header & Navigation Styles (Final Version for Screenshot Alignment and Spacing) --- */
+
+/* Make sure your .container class is defined like this somewhere in your CSS */
+.container {
+    max-width: 1200px; /* Your desired content width (e.g., 1200px) */
+    margin: 0 auto; /* Centers the container on the page */
+}
+
+.main-header {
+    background-color: #ffffff;
+    padding: 10px 0; /* Vertical padding for the header */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    /* This class has `.container` so it inherits max-width and margin: auto */
+    display: flex; /* Still flex, but primarily for aligning children vertically */
+    justify-content: center; /* Helps center any remaining flex items, but logo will be absolute */
+    align-items: center;
+    position: relative; /* CRITICAL: Allows absolute positioning of its children (logo, nav, hamburger) */
+    height: 50px; /* Overall height of the header area */
+
+    /* THIS IS KEY for left/right alignment with your other sections. */
+    /* It applies 20px padding from the left and right edges of the 1200px container. */
+    padding: 0 20px;
+    box-sizing: border-box; /* Ensures padding is included in the element's total width */
+}
+
+/* Style for the logo link and image */
+.logo-link {
+    position: absolute; /* Use absolute positioning for precise centering */
+    left: 50%; /* Position from the left edge of the parent */
+    transform: translateX(-50%); /* Shift left by half its own width to truly center */
+    z-index: 1002; /* Ensure logo is above nav and hamburger */
+    display: flex;
+    align-items: center;
+    height: 100%; /* Fill header-container height */
+}
+
+.logo-link img {
+    height: 100%;
+    width: auto;
+    max-width: 150px;
+}
+
+/* Desktop Navigation */
+.main-nav {
+    position: absolute; /* Position absolute to span behind the logo */
+    top: 0;
+    left: 0;
+    width: 100%; /* Makes nav span the full width of its parent (.header-container) */
+    height: 100%; /* Makes nav span full height of its parent */
+    display: flex;
+    justify-content: space-evenly; /* Distributes space evenly between the two <ul> groups */
+    align-items: center;
+    padding: 0; /* No internal padding here, header-container handles overall content alignment */
+    box-sizing: border-box;
+    z-index: 1001; /* Below logo, above other content */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Keeps list items horizontal */
+}
+
+.main-nav ul li {
+    margin: 0 15px; /* Space between individual desktop nav items */
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: #006064;
+}
+
+/* Hamburger Menu Icon (hidden by default on desktop) */
+.hamburger-menu {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1003; /* Ensure button is on top of everything */
+    position: absolute; /* Positioned absolutely on the right for desktop */
+    right: 20px; /* Aligns to the right edge of the header-container's padding */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Media Queries for Mobile Navigation --- */
+@media (max-width: 992px) {
+    .header-container {
+        height: 50px;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .logo-link {
+        position: static; /* Reset logo position for mobile flow */
+        transform: none;
+        left: auto;
+        flex-grow: 0;
+        margin-right: auto;
+        height: 100%;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: static; /* Place hamburger in normal flow for mobile */
+        transform: none;
+        right: auto;
+        margin-left: auto;
+        top: auto;
+    }
+
+    .main-nav {
+        position: fixed; /* Fixed to viewport for mobile overlay */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 1000;
+        overflow-y: auto;
+        padding: 0;
+    }
+
+    .main-nav.nav-open {
+        transform: translateX(0);
+    }
+
+    /* Stack the two <ul>s vertically within the mobile menu */
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        margin: 5px 0;
+        padding: 0;
+    }
+
+    .main-nav ul li {
+        margin: 15px 0; /* Space between stacked individual items on mobile */
+    }
+
+    .main-nav ul li a {
+        font-size: 1.6em;
+        color: #2c3e50;
+    }
+
+    /* Animation for hamburger icon when menu is open */
+    .hamburger-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* Adjust breakpoint for very small screens if needed */
+@media (max-width: 480px) {
+    .logo-link {
+        height: 45px;
+    }
+    .main-nav ul li a {
+        font-size: 1.4em;
+    }
+}
+
+/* Mental Wellness Section */
+.mental-wellness-section {
+    background-color: #f8f0e3; /* Light, warm background from your image */
+    border-radius: 20px; /* Rounded corners for the entire section card */
+    padding: 60px 40px; /* Internal padding for content */
+    margin: 40px auto; /* Margin top/bottom, auto left/right for centering */
+    max-width: 1200px; /* Max width for the section */
+    position: relative; /* For absolute positioning of abstract elements */
+    overflow: hidden; /* Crucial to clip abstract elements that extend outside */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    min-height: 400px; /* Ensure a decent height */
+    box-sizing: border-box; /* Include padding in dimensions */
+}
+
+.wellness-content-wrapper {
+    text-align: center; /* Center the text content */
+    max-width: 700px; /* Limit text width for readability */
+    position: relative; /* Ensure text is above abstract elements */
+    z-index: 2; /* Content should be on top */
+}
+
+.mental-wellness-section h2 {
+    color: #2c3e50; /* Darker heading text */
+    font-size: 3em; /* Large heading */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.mental-wellness-section p {
+    color: #555; /* Medium gray for description */
+    font-size: 1.2em;
+    line-height: 1.7;
+    margin-bottom: 35px; /* Space above button */
+}
+
+/* Button style for 'Explore Wellness Resources' (Dark button with white text) */
+.button.secondary {
+    background-color: #004d50; /* Dark teal from your brand palette */
+    color: white; /* White text */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px; /* Slightly rounded for consistency */
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* In case it's an <a> tag */
+    display: inline-block; /* For padding and margins */
+}
+
+.button.secondary:hover {
+    background-color: #003336; /* Darker teal on hover */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Abstract Elements Positioning */
+.wellness-abstract-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Below content */
+    pointer-events: none; /* Allow clicks to pass through to content */
+}
+
+.wellness-abstract-elements img {
+    width: 100%; /* Image takes full width of its container */
+    height: 100%; /* Image takes full height of its container */
+    object-fit: cover; /* Cover the container, cropping if necessary */
+    object-position: center; /* Center the image within its bounds */
+    opacity: 0.5; /* Adjust opacity to make it a subtle background */
+    display: block; /* Remove extra space below image */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .mental-wellness-section {
+        padding: 50px 30px;
+        margin: 30px auto;
+        min-height: 350px;
+    }
+    .mental-wellness-section h2 {
+        font-size: 2.5em;
+    }
+    .mental-wellness-section p {
+        font-size: 1.1em;
+    }
+    .button.secondary {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .mental-wellness-section {
+        padding: 40px 20px;
+        margin: 25px auto;
+        min-height: 300px;
+        border-radius: 15px;
+    }
+    .mental-wellness-section h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    .mental-wellness-section p {
+        font-size: 1em;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mental-wellness-section {
+        padding: 30px 15px;
+        margin: 20px 10px;
+        min-height: 250px;
+        border-radius: 10px;
+    }
+    .mental-wellness-section h2 {
+        font-size: 1.8em;
+    }
+    .mental-wellness-section p {
+        font-size: 0.95em;
+    }
+    .button.secondary {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .wellness-abstract-elements img {
+        opacity: 0.3; /* More subtle on very small screens */
+    }
+}
+
+/* ... (previous CSS for body, nav, hero) ... */
+
+/* Styles for the Connect Section */
+.connect-section {
+    background-color: #ffffff; /* White background for contrast */
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: row; /* Arrange content and image side-by-side */
+    align-items: center; /* Vertically align content and image */
+    justify-content: space-around; /* Space out content and image */
+    margin: 40px auto;
+    max-width: 1200px;
+    border-radius: 10px; /* Slightly rounded corners */
+}
+
+.connect-content {
+    text-align: left; /* Align text to the left */
+    max-width: 45%; /* Limit width of the text content */
+}
+
+.section-subtitle {
+    color: #777; /* Greyish subtitle */
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    display: block; /* Ensure it's on its own line */
+}
+
+.connect-content h2 {
+    color: #2c3e50;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+.connect-content p {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.button.secondary {
+    background-color: #00838f; /* Teal/cyan button */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button.secondary:hover {
+    background-color: #006064; /* Darker teal/cyan on hover */
+}
+
+.connect-image {
+    max-width: 45%; /* Limit width of the image container */
+    background-color: lightgoldenrodyellow;
+
+    /* You might want to add specific height or background styles depending on how the image will be displayed */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .connect-section {
+        flex-direction: column; /* Stack content and image on smaller screens */
+        text-align: center;
+    }
+    .connect-content,
+    .connect-image {
+        max-width: 80%;
+        margin-bottom: 30px;
+    }
+    .connect-content {
+        text-align: center;
+    }
+}
+/* ... (previous CSS for body, nav, hero, connect-section, connect-content, etc.) ... */
+
+.connect-image {
+    max-width: 45%; /* Keep this to control the container's width */
+    /* Add the following styles to control the image within the container */
+}
+
+.connect-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* ... (rest of your CSS, including responsive adjustments) ... */
+/* Intro Path Section */
+.intro-path-section {
+    padding: 100px 20px; /* Ample padding top and bottom */
+    text-align: center; /* Center all content */
+    /* background-color: #f8f0e3; Light, neutral background color */
+}
+
+.section-label {
+    color: #777; /* Greyish label */
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block; /* Ensures it takes its own line */
+    margin-bottom: 15px; /* Space below the label */
+}
+
+.intro-path-section h2 {
+    color: #2c3e50; /* Darker heading color */
+    font-size: 3.5em; /* Large, prominent heading */
+    margin-bottom: 25px; /* Space below the heading */
+    line-height: 1.2; /* Better readability for multi-line headings */
+    max-width: 800px; /* Limit width for readability */
+    margin-left: auto;
+    margin-right: auto; /* Center the heading itself */
+}
+
+.section-description {
+    color: #555; /* Medium grey for description */
+    font-size: 1.2em; /* Readable font size */
+    line-height: 1.7; /* Good line spacing for readability */
+    max-width: 700px; /* Limit width for comfortable reading */
+    margin: 0 auto; /* Center the paragraph */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .intro-path-section {
+        padding: 60px 15px; /* Reduce padding on smaller screens */
+    }
+    .intro-path-section h2 {
+        font-size: 2.5em; /* Adjust heading size for smaller screens */
+        margin-bottom: 20px;
+    }
+    .section-description {
+        font-size: 1em; /* Adjust description size */
+    }
+}
+
+/* Artist Focus Cards Section - Neutral Colors */
+.artist-focus-section-neutral {
+    padding: 60px 20px;
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 10px auto;
+    justify-content: center; /* Center the cards */
+    gap: 30px; /* Space between the cards */
+    /* background-color: #f0f0f0;  */
+}
+
+.focus-card-neutral {
+    background-color: #ffffff; /* Pure white background for all cards by default */
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Slightly more prominent shadow */
+    max-width: 45%; /* Adjust card width */
+    height: 350px;
+    padding: 30px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Specific background tints for left and right cards */
+.focus-card-neutral.left {
+    background-color: #f7f7f7; /* Very subtle light gray tint for distinction */
+}
+
+.focus-card-neutral.right {
+    background-color: #fdfdfd; /* Even lighter, almost white tint for contrast */
+}
+
+.focus-card-neutral:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+}
+
+.card-content-neutral h3 {
+    color: #333333; /* Darker charcoal for headings */
+    font-size: 1.8em;
+    margin: 25px 0;
+}
+
+.card-content-neutral p {
+    color: #666666; /* Medium gray for paragraph text */
+    line-height: 1.6;
+    margin: 25px 0;
+}
+
+.button-neutral {
+    background-color: #708090; /* Slate Gray for the button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.button-neutral:hover {
+    background-color: #5a6b7a; /* Darker Slate Gray on hover */
+    transform: translateY(-2px);
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .artist-focus-section-neutral {
+        flex-direction: column; /* Stack cards */
+        align-items: center;
+        gap: 20px;
+    }
+    .focus-card-neutral {
+        max-width: 90%;
+    }
+}
+/* Artist Development Coaching Section */
+.artist-development-coaching-section {
+    background-color: #f0f0f0; /* Light cool gray background (consistent) */
+    padding: 80px 20px;
+    display: flex;
+    align-items: center; /* Vertically align text and image */
+    justify-content: center; /* Center the content horizontally */
+    gap: 60px; /* Space between text and image */
+    margin: 40px auto; /* Margin top/bottom for separation from other sections */
+    max-width: 1200px; /* Max width for the whole section */
+    border-radius: 15px; /* Rounded corners for the section container */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Consistent subtle shadow */
+}
+
+.artist-dev-coaching-content {
+    text-align: left;
+    max-width: 500px; /* Control max width of the text block */
+}
+
+.artist-dev-coaching-content h3 {
+    color: #333333; /* Dark charcoal heading (consistent) */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.artist-dev-coaching-content p {
+    color: #666666; /* Medium gray text (consistent) */
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* Reusing the button style from artist-focus-cards-neutral.css */
+.button-neutral {
+    background-color: #708090; /* Slate Gray for the button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.button-neutral:hover {
+    background-color: #5a6b7a; /* Darker Slate Gray on hover */
+    transform: translateY(-2px);
+}
+
+
+.artist-dev-coaching-image {
+    max-width: 450px; /* Adjust image container width */
+    flex-shrink: 0; /* Prevent image from shrinking if content is long */
+}
+
+.artist-dev-coaching-image img {
+    display: block; /* Remove extra space below image */
+    width: 100%; /* Image fills its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Slightly rounded corners for the image itself */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for the image */
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 992px) {
+    .artist-development-coaching-section {
+        flex-direction: column; /* Stack content and image */
+        text-align: center;
+        gap: 40px; /* Reduce gap when stacked */
+        padding: 60px 15px;
+        margin: 30px auto; /* Adjust margin */
+    }
+    .artist-dev-coaching-content,
+    .artist-dev-coaching-image {
+        max-width: 90%; /* Allow wider usage on smaller screens */
+    }
+    .artist-dev-coaching-content h3,
+    .artist-dev-coaching-content p {
+        text-align: center; /* Center text when stacked */
+    }
+}
+
+@media (max-width: 576px) {
+    .artist-dev-coaching-content h3 {
+        font-size: 2em; /* Further reduce heading size */
+    }
+    .artist-dev-coaching-content p {
+        font-size: 0.95em; /* Adjust paragraph font size */
+    }
+}
+
+/* Testimonials Two Card Slider Section */
+.testimonials-two-card-section {
+    padding: 80px 20px;
+    /* background-color: #f0f0f0; */
+    display: flex;
+    align-items: center; /* Vertically align content */
+    justify-content: center;
+    gap: 50px; /* Space between intro block and cards container */
+    max-width: 1200px; /* Wider max-width to accommodate two cards */
+    margin: 0 auto;
+}
+
+.testimonials-intro-panel {
+    flex-shrink: 0; /* Don't allow this block to shrink */
+    max-width: 450px; /* Control max width of the intro text */
+    text-align: left;
+    position: relative; /* For arrow positioning if needed differently */
+}
+
+.testimonials-intro-panel .section-label {
+    color: #777; /* Greyish label */
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.testimonials-intro-panel h2 {
+    color: #333333; /* Dark charcoal heading */
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.testimonials-intro-panel p.section-intro {
+    color: #666666; /* Medium gray for description */
+    font-size: 1.15em;
+    line-height: 1.7;
+    margin-bottom: 30px; /* Space above arrows */
+}
+
+.slider-nav-arrows {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px; /* Space below content */
+}
+
+.slider-arrow {
+    background-color: #708090; /* Slate Gray button */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Circular buttons */
+    width: 45px;
+    height: 45px;
+    font-size: 1.4em; /* Larger arrow font */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slider-arrow:hover {
+    background-color: #5a6b7a; /* Darker Slate Gray on hover */
+    transform: scale(1.05);
+}
+
+.slider-arrow:disabled {
+    background-color: #cccccc; /* Lighter gray for disabled */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* --- Testimonial Slider & Cards --- */
+
+/* Main container for the slider track */
+.testimonials-slider-track-container {
+    flex-grow: 1; /* Allows this container to expand */
+    position: relative;
+    max-width: 800px; /* Limits the visible width of the slider (important for two cards) */
+    overflow: hidden; /* <--- CRITICAL: Hides any parts of slides that are outside this container */
+    margin: 40px auto; /* Centers the slider horizontally on the page */
+}
+
+/* The actual track that holds all testimonial groups and gets translated by JavaScript */
+.testimonials-slider-track {
+    display: flex; /* <--- CRITICAL: Lays out .testimonial-group elements in a single row */
+    transition: transform 0.6s ease-in-out; /* Smooth sliding animation */
+    /* Ensure no extra padding or margin here that could interfere with 100% width calculation */
+    padding: 0;
+    margin: 0;
+}
+
+/* Each 'testimonial-group' represents one full slide (e.g., two cards side-by-side) */
+.testimonial-group {
+    flex-shrink: 0; /* <--- CRITICAL: Prevents this group from shrinking below its specified width */
+    width: 100%; /* <--- CRITICAL: Each group takes up 100% of the .testimonials-slider-track-container's width */
+    display: flex; /* <--- CRITICAL: Lays out the .testimonial-card-item elements inside this group */
+    gap: 30px; /* Space between the two cards in this group */
+    justify-content: center; /* Centers the cards within the group if they don't fill the full width */
+    padding: 10px 0; /* Little vertical padding for visual comfort, doesn't affect horizontal layout */
+    box-sizing: border-box; /* Includes padding in the total width of the group */
+}
+
+/* Individual testimonial card items */
+.testimonial-card-item {
+    background-color: #ffffff; /* Pure white card background */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+    padding: 40px;
+    flex: 1; /* <--- CRITICAL: Allows each card to grow and take equal space within its group */
+    min-width: 350px; /* Minimum width for readability per card (ensures cards don't get too small) */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes author info to the bottom */
+    text-align: left; /* Text alignment within card */
+    min-height: 280px; /* Ensure cards have a consistent minimum height */
+    box-sizing: border-box; /* Includes padding in the total width of the card */
+    /* Ensure no horizontal margins or borders here that would make the card wider than expected */
+    margin: 0;
+    border: none;
+}
+
+.testimonial-quote {
+    color: #333; /* Darker text */
+    font-size: 1.15em; /* Slightly adjusted size for two cards */
+    line-height: 1.6;
+    margin-bottom: 25px; /* Space between quote and author info */
+    font-style: italic;
+    position: relative;
+    padding: 0 15px; /* Padding to prevent quote marks cutoff */
+}
+
+/* CSS quotation marks styling */
+.testimonial-quote::before {
+    content: '“';
+    font-size: 3em;
+    color: #cccccc;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    line-height: 1;
+    font-family: serif;
+    opacity: 0.6;
+}
+
+.testimonial-quote::after {
+    content: '”';
+    font-size: 3em;
+    color: #cccccc;
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    line-height: 1;
+    font-family: serif;
+    opacity: 0.6;
+}
+
+.testimonial-author-info {
+    text-align: right; /* Author info to the right */
+    padding-top: 15px;
+    border-top: 1px solid #eeeeee; /* Subtle separator line */
+}
+
+.author-name {
+    font-weight: bold;
+    color: #333333;
+    font-size: 1em;
+    margin-bottom: 3px;
+}
+
+.author-title {
+    color: #666666;
+    font-size: 0.85em;
+}
+
+/* --- Responsive adjustments for Testimonials --- */
+@media (max-width: 1024px) {
+    /* If you have a .testimonials-two-card-section wrapper with flex, adjust it here */
+    .testimonials-two-card-section {
+        flex-direction: column; /* Example: Stack intro and slider */
+        align-items: center;
+        gap: 40px;
+        padding: 60px 15px;
+    }
+    .testimonials-intro-panel { /* Assuming you have an intro panel */
+        max-width: 90%;
+        text-align: center;
+    }
+    .testimonials-intro-panel h2,
+    .testimonials-intro-panel p.section-intro {
+        text-align: center;
+    }
+    .slider-nav-arrows { /* Assuming you have a wrapper for nav arrows */
+        justify-content: center; /* Center arrows when stacked */
+    }
+    .testimonials-slider-track-container {
+        max-width: 90%; /* Allow wider usage on smaller screens */
+    }
+    .testimonial-group {
+        flex-direction: column; /* <--- CRITICAL: Stack cards vertically within the group on smaller screens */
+        gap: 20px; /* Adjust gap when stacked */
+    }
+    .testimonial-card-item {
+        min-width: unset; /* <--- CRITICAL: Remove min-width when stacking to allow full width */
+        width: 100%; /* Take full width when stacked */
+        padding: 30px 25px;
+        text-align: left; /* Keep text left-aligned within card */
+    }
+    .testimonial-quote {
+        padding: 0 10px;
+        font-size: 1.1em;
+    }
+    .testimonial-quote::before {
+        top: -5px;
+        left: 0px;
+        font-size: 2.8em;
+    }
+    .testimonial-quote::after {
+        bottom: -5px;
+        right: 0px;
+        font-size: 2.8em;
+    }
+    .testimonial-author-info {
+        text-align: center; /* Center author info when cards are stacked */
+    }
+}
+
+@media (max-width: 576px) {
+    .testimonials-intro-panel h2 {
+        font-size: 2.2em;
+    }
+    .testimonial-card-item {
+        padding: 25px 15px;
+    }
+    .testimonial-quote {
+        font-size: 1em;
+    }
+}
+
+
+/* Our Partners Section */
+/* Our Partners Section - Left Text, Right Logos */
+.our-partners-section-left-text {
+    padding: 20px;
+    background-color: #f0f0f0; /* Light cool gray background (consistent) */
+    display: flex; /* Use flexbox for left/right layout */
+    align-items: center; /* Vertically align content */
+    justify-content: space-evenly; /* Center the entire section if it doesn't fill max-width */
+    gap: 60px; /* Space between the text content and the logos */
+    max-width: 1200px; /* Max width for the entire section */
+    margin: 40px auto; /* Margin top/bottom for separation and center horizontally */
+    border-radius: 15px; /* Rounded corners for the section container */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Consistent subtle shadow */
+}
+
+.partners-content-left {
+    flex-shrink: 0; /* Prevent content from shrinking */
+    max-width: 450px; /* Control max width of the text block */
+    text-align: left; /* Text aligns to the left */
+}
+
+.partners-content-left .section-label {
+    color: #777;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.partners-content-left h2 {
+    color: #333333; /* Dark charcoal heading (consistent) */
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.partners-content-left .section-description {
+    color: #666666; /* Medium gray text (consistent) */
+    font-size: 1.15em;
+    line-height: 1.7;
+    margin-bottom: 0; /* No bottom margin if it's the last element */
+}
+
+.partners-logos-right {
+    flex-grow: 1; /* Allow logos to take up remaining space */
+    display: flex;
+    flex-wrap: wrap; /* Allow logos to wrap to next line */
+    justify-content: center; /* Center logos within their container */
+    align-items: center; /* Vertically align logos */
+    gap: 40px; /* Space between individual logos */
+    max-width: 650px; /* Max width for the logo display area */
+}
+
+.logo-item {
+    flex-shrink: 0;
+    max-width: 180px; /* Max width for each logo item */
+    height: 60px; /* Consistent height for logo display area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    filter: grayscale(100%) brightness(1.2); /* Make logos grayscale and slightly brighter */
+    opacity: 0.7; /* Slightly faded look */
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-item img:hover {
+    filter: grayscale(0%) brightness(1); /* Full color on hover */
+    opacity: 1; /* Full opacity on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .our-partners-section-left-text {
+        flex-direction: column; /* Stack content and logos */
+        text-align: center;
+        gap: 40px;
+        padding: 60px 15px;
+        margin: 30px auto;
+    }
+    .partners-content-left,
+    .partners-logos-right {
+        max-width: 90%; /* Allow wider usage on smaller screens */
+    }
+    .partners-content-left h2,
+    .partners-content-left .section-description {
+        text-align: center; /* Center text when stacked */
+    }
+    .partners-logos-right {
+        gap: 25px; /* Reduce gap between logos */
+    }
+    .logo-item {
+        max-width: 140px; /* Adjust logo size for smaller screens */
+        height: 50px;
+    }
+}
+
+@media (max-width: 576px) {
+    .partners-content-left h2 {
+        font-size: 2.2em;
+    }
+    .partners-content-left .section-description {
+        font-size: 1em;
+    }
+    .logo-item {
+        max-width: 100px;
+        height: 40px;
+    }
+}
+/* Resources Section */
+.resources-section {
+    padding: 100px 20px; /* Ample padding top and bottom */
+    text-align: center; /* Center all content */
+    /* background-color: #f0f0f0;  */
+}
+
+/* Resource Cards Section - Consistent Colors */
+.resource-cards-section-consistent {
+    padding: 80px 20px;
+    background-color: #fcfcfc; /* Very subtle off-white section background */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.resource-card-consistent {
+    background-color: #ffffff; /* Pure white card background */
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 35px;
+    text-align: left;
+    flex: 1 1 300px;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resource-card-consistent:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.resource-card-consistent h3 {
+    color: #333333; /* Dark charcoal heading */
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.resource-card-consistent p {
+    color: #666666; /* Medium gray text */
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* Consistent Button Style */
+.button-consistent {
+    background-color: #00838f; /* Consistent Teal/Cyan accent color */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    font-weight: bold;
+}
+
+.button-consistent:hover {
+    background-color: #006064; /* Darker teal on hover */
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .resource-cards-section-consistent {
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 15px;
+        gap: 25px;
+    }
+    .resource-card-consistent {
+        max-width: 90%;
+        min-height: unset;
+        padding: 30px;
+    }
+    .resource-card-consistent h3 {
+        font-size: 1.6em;
+    }
+    .resource-card-consistent p {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 576px) {
+    .resource-card-consistent {
+        padding: 25px;
+    }
+    .resource-card-consistent h3 {
+        font-size: 1.4em;
+    }
+    .button-consistent {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+/* Community Section */
+.community-section {
+    padding: 80px 20px;
+    background-color: #fcfcfc; /* Very subtle off-white background (consistent) */
+    display: flex;
+    align-items: center; /* Vertically align content */
+    justify-content: center;
+    gap: 60px; /* Space between text content and illustration */
+    max-width: 1200px; /* Max width for the entire section */
+    margin: 40px auto; /* Margin top/bottom for separation and center horizontally */
+    border-radius: 15px; /* Consistent rounded corners for the section container */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Consistent subtle shadow */
+}
+
+.community-content {
+    flex-shrink: 0; /* Prevent content from shrinking */
+    max-width: 500px; /* Control max width of the text block */
+    text-align: left; /* Text aligns to the left */
+}
+
+.community-content .section-label {
+    color: #777; /* Greyish label (consistent) */
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.community-content h2 {
+    color: #333333; /* Dark charcoal heading (consistent) */
+    font-size: 3em;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.community-content .section-description {
+    color: #666666; /* Medium gray text (consistent) */
+    font-size: 1.15em;
+    line-height: 1.7;
+    margin-bottom: 35px; /* Space before the button */
+}
+
+/* Consistent button style */
+.button-community {
+    background-color: #00838f; /* Consistent Teal/Cyan accent color */
+    color: white;
+    padding: 14px 30px; /* Slightly larger padding for a prominent button */
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.button-community:hover {
+    background-color: #006064; /* Darker teal on hover */
+    transform: translateY(-2px);
+}
+
+.community-illustration {
+    flex-grow: 1; /* Allow illustration to take up remaining space */
+    max-width: 500px; /* Max width for the illustration container */
+    flex-shrink: 0; /* Prevent illustration from shrinking below its natural size */
+}
+
+.community-illustration img {
+    width: 100%; /* Image fills its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .community-section {
+        flex-direction: column; /* Stack content and illustration */
+        text-align: center;
+        gap: 40px;
+        padding: 60px 15px;
+        margin: 30px auto;
+    }
+    .community-content,
+    .community-illustration {
+        max-width: 90%; /* Allow wider usage on smaller screens */
+    }
+    .community-content h2,
+    .community-content .section-description {
+        text-align: center; /* Center text when stacked */
+    }
+    .community-content h2 {
+        font-size: 2.5em;
+    }
+    .community-content .section-description {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 576px) {
+    .community-content h2 {
+        font-size: 2.2em;
+    }
+    .button-community {
+        padding: 12px 25px;
+        font-size: 0.95em;
+    }
+}
+/* FAQ Section - REVISED CSS for Two Columns */
+.faq-section {
+    padding: 80px 20px;
+    background-color: #fcfcfc; /* Very subtle off-white background (consistent) */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align items to the start (top) */
+    max-width: 1200px;
+    margin: 40px auto;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.faq-columns {
+    display: flex;
+    justify-content: space-between; /* Pushes columns apart */
+    align-items: flex-start; /* Align items to the top */
+    width: 100%;
+    gap: 60px; /* Space between the two columns */
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+}
+
+.faq-left-column {
+    flex: 1; /* Allow left column to grow */
+    min-width: 300px; /* Minimum width for the left column */
+    max-width: 450px; /* Max width for the left column content */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space if elements are different heights */
+    height: 100%; /* Take full height of parent faq-columns */
+}
+
+.faq-header-content {
+    margin-bottom: 30px; /* Space between header content and illustration */
+}
+
+.faq-header-content .section-label {
+    color: #777;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.faq-header-content h2 {
+    color: #333333;
+    font-size: 3em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.faq-header-content .section-description {
+    color: #666666;
+    font-size: 1.15em;
+    line-height: 1.7;
+}
+
+.faq-illustration {
+    flex-shrink: 0;
+    max-width: 350px; /* Max width for the illustration */
+    width: 100%; /* Ensure it scales within its container */
+    margin-top: auto; /* Push illustration to the bottom of the left column if space allows */
+}
+
+.faq-illustration img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Accordion Styles */
+.faq-accordion {
+    flex: 1; /* Allow accordion to grow */
+    min-width: 450px; /* Minimum width for the accordion itself */
+    max-width: 650px; /* Max width for the accordion */
+}
+
+.accordion-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1.1em;
+    color: #333333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.accordion-header h3 {
+    margin: 0;
+    font-size: inherit;
+    color: inherit;
+    line-height: 1.4;
+    flex-grow: 1;
+    padding-right: 15px;
+}
+
+.accordion-icon {
+    font-size: 1.8em;
+    color: #00838f;
+    transition: transform 0.3s ease;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 25px;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.accordion-content p {
+    color: #666666;
+    font-size: 1em;
+    line-height: 1.6;
+    padding-bottom: 20px;
+    margin-top: 0;
+}
+
+/* JavaScript controlled states */
+.accordion-item.active {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-item.active .accordion-header .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-item.active .accordion-content {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .faq-section {
+        padding: 60px 15px;
+        margin: 30px auto;
+        align-items: center; /* Center content when columns wrap */
+    }
+    .faq-columns {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center stacked columns */
+        gap: 40px;
+    }
+    .faq-left-column {
+        min-width: unset; /* Remove min-width to allow full width on small screens */
+        max-width: 90%; /* Allow wider usage on smaller screens */
+        text-align: center;
+    }
+    .faq-header-content {
+        margin-bottom: 30px;
+    }
+    .faq-header-content h2,
+    .faq-header-content .section-description {
+        text-align: center;
+    }
+    .faq-illustration {
+        max-width: 300px; /* Adjust illustration size on smaller screens */
+        margin: 0 auto; /* Center illustration when stacked */
+    }
+    .faq-accordion {
+        min-width: unset; /* Remove min-width for accordion */
+        max-width: 95%; /* Allow accordion to be wider on smaller screens */
+        margin-top: 0; /* Remove top margin as columns are now stacked */
+    }
+    .accordion-header {
+        padding: 18px 20px;
+        font-size: 1em;
+    }
+    .accordion-content {
+        padding: 0 20px;
+    }
+    .accordion-content p {
+        padding-bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .faq-header-content h2 {
+        font-size: 2.2em;
+    }
+    .accordion-header {
+        padding: 15px 18px;
+        font-size: 0.95em;
+    }
+    .accordion-icon {
+        font-size: 1.5em;
+    }
+}
+/* Support Section */
+.support-section {
+    padding: 100px 20px; /* Ample padding top/bottom */
+    /* background-color: #fcfcfc;  */
+    text-align: center; /* Center all text content */
+}
+
+.support-content {
+    max-width: 800px; /* Limit content width for readability */
+    margin: 0 auto; /* Center the content block */
+}
+
+.support-content .section-label {
+    color: #777; /* Medium gray for the label */
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block; /* Ensures it takes its own line */
+    margin-bottom: 15px;
+}
+
+.support-content h2 {
+    color: #333333; /* Dark charcoal for the heading */
+    font-size: 3.5em; /* Large, prominent heading */
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.support-content .section-description {
+    color: #666666; /* Medium gray for the description text */
+    font-size: 1.15em;
+    line-height: 1.7;
+    max-width: 650px; /* Slightly narrower for description readability */
+    margin: 0 auto; /* Center description text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .support-section {
+        padding: 80px 15px;
+    }
+    .support-content h2 {
+        font-size: 2.8em;
+    }
+    .support-content .section-description {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .support-content h2 {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 576px) {
+    .support-section {
+        padding: 60px 15px;
+    }
+    .support-content h2 {
+        font-size: 1.8em;
+    }
+    .support-content .section-description {
+        font-size: 0.95em;
+    }
+}
+/* Contact Section - Add this to your existing contact-section.css */
+
+.form-response-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(10px); /* Slightly move down */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: #333; /* Default text color */
+}
+
+.form-response-message.show {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Move to original position */
+}
+
+.form-response-message.success {
+    background-color: #d4edda; /* Light green for success */
+    color: #155724; /* Dark green text */
+}
+
+.form-response-message.error {
+    background-color: #f8d7da; /* Light red for error */
+    color: #721c24; /* Dark red text */
+}
+
+
+.contact-section {
+    padding: 80px 0; /* Only top/bottom padding here if .container handles side padding */
+    background-color: #f0f0f0; /* Consistent light cool gray background */
+}
+
+/* Ensure your .container class is defined like this (it should be if you're using it for the header) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* This padding provides the 20px buffer on the sides for content alignment */
+}
+
+.contact-container {
+    max-width: 1200px; /* Max width for the entire section content */
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    gap: 40px; /* Space between the two main columns */
+    align-items: flex-start; /* Align content to the top */
+}
+
+.contact-info {
+    flex: 1; /* Allows it to grow and shrink */
+    min-width: 300px; /* Minimum width for the info column */
+    max-width: 450px; /* Max width for the info column */
+    padding: 20px 0; /* Add some vertical padding for alignment */
+}
+
+.contact-info h2,
+.contact-form-wrapper h2 {
+    color: #333333; /* Dark charcoal for headings */
+    font-size: 2.2em;
+    margin-bottom: 30px;
+}
+
+.contact-info .info-item {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #333333;
+}
+
+.contact-info .info-item .info-label {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.contact-info .info-item a {
+    color: #00838f; /* Teal/Cyan for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info .info-item a:hover {
+    color: #006064; /* Darker teal on hover */
+    text-decoration: underline;
+}
+
+.social-links {
+    margin-top: 30px;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px; /* Space between icons */
+}
+
+.social-links a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #e0e0e0; /* Light gray background for icons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+.social-links img {
+    width: 60%; /* Adjust icon size within the circle */
+    height: 60%;
+    filter: invert(20%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%); /* Make icons dark gray */
+}
+
+.response-time-note {
+    font-size: 0.95em;
+    color: #666666;
+    margin-top: 0;
+}
+
+/* Contact Form Styles */
+.contact-form-wrapper {
+    flex: 1; /* Allows it to grow and shrink */
+    min-width: 350px; /* Minimum width for the form column */
+    background-color: #ffffff; /* White background for the form card */
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Consistent shadow */
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px;
+    font-size: 1em;
+    color: #333333;
+    background-color: #f9f9f9; /* Slightly off-white input background */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.contact-form input[type="email"]::placeholder,
+.contact-form textarea::placeholder {
+    color: #999999; /* Lighter placeholder text */
+}
+
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #00838f; /* Teal/Cyan border on focus */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 131, 143, 0.2); /* Subtle glow on focus */
+}
+
+.contact-form textarea {
+    resize: vertical; /* Allow vertical resizing by user */
+    min-height: 120px; /* Minimum height for textarea */
+}
+
+.submit-button {
+    background-color: #006064; /* Darker teal/cyan, suitable for a primary action */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Make button full width of form */
+}
+
+.submit-button:hover {
+    background-color: #004d50; /* Even darker teal on hover */
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center stacked columns */
+        gap: 30px; /* Reduce gap when stacked */
+    }
+
+    .contact-info,
+    .contact-form-wrapper {
+        min-width: unset; /* Remove min-width to allow full width usage */
+        max-width: 95%; /* Adjust max-width for better mobile layout */
+        width: 100%; /* Ensure they take full width when stacked */
+        text-align: center; /* Center text in info column */
+    }
+
+    .contact-info h2,
+    .contact-form-wrapper h2 {
+        text-align: center; /* Ensure headings are centered */
+    }
+
+    .contact-info .info-item {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-info .info-item .info-label {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .social-links {
+        justify-content: center; /* Center social icons */
+    }
+
+    .contact-form-wrapper {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-info h2,
+    .contact-form-wrapper h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    .contact-info .info-item {
+        font-size: 1em;
+    }
+    .social-links a {
+        width: 30px;
+        height: 30px;
+        font-size: 1.2em;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .submit-button {
+        padding: 12px;
+        font-size: 1em;
+    }
+}
+.social-links img {
+    width: 60%;
+    height: 60%;
+    filter: invert(100%); /* This will turn black pixels to white */
+}
+
+/* Site Footer */
+.site-footer {
+    background-color: #fcfcfc; /* Very subtle off-white background for the overall footer */
+    padding: 60px 20px 30px; /* Top, side, bottom padding */
+    color: #333333;
+    font-family: 'Poppins', sans-serif; /* Ensure consistent font */
+    font-size: 1em;
+}
+
+/* Top Content: Nav Columns and CTA Card */
+.footer-top-content {
+    max-width: 1200px; /* Overall max width for the main footer content */
+    margin: 0 auto 50px; /* Center and add space below */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    gap: 40px; /* Space between the left navigation and the right CTA card */
+}
+
+/* Footer Main Navigation (Left Side) */
+.footer-main-nav {
+    flex: 2; /* Allow nav to take more space, but not full width */
+    min-width: 400px; /* Minimum width for the combined nav columns */
+    display: flex;
+    justify-content: flex-start; /* Align nav columns to the left */
+    flex-wrap: wrap;
+    gap: 40px; /* Space between the two nav columns */
+}
+
+.footer-nav-column {
+    flex: 1; /* Each nav column takes equal space within its parent */
+    min-width: 150px; /* Minimum width for each nav column */
+    padding: 10px 0;
+}
+
+.footer-nav-column .footer-logo {
+    font-size: 1.8em;
+    color: #333333; /* Dark text for logo */
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.footer-nav-column h4 {
+    font-size: 1.1em;
+    color: #333333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+.footer-nav-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-nav-column ul li a {
+    color: #666666;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.footer-nav-column ul li a:hover {
+    color: #00838f; /* Teal/Cyan on hover */
+    text-decoration: underline;
+}
+
+.footer-nav-column .legal-heading {
+    margin-top: 30px; /* Space above legal links */
+}
+
+/* Call to Action (CTA) Card (Right Side) */
+/* Call to Action (CTA) Card (Right Side) */
+.footer-cta-card {
+    flex: 1; /* Allows it to take remaining space */
+    min-width: 300px; /* Ensures it doesn't get too small */
+    max-width: 450px; /* Max width for the card's container */
+    background-color: #006064; /* Darker teal/cyan background as seen in mockup */
+    border-radius: 20px; /* Rounded corners */
+    padding: 40px 30px; /* Internal padding */
+    color: #ffffff; /* Default text color for elements inside the card */
+    position: relative; /* Essential for positioning the background illustration */
+    overflow: hidden; /* Ensures the background illustration doesn't spill out */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+    text-align: left; /* Aligns text within the card to the left */
+    display: flex; /* Use flexbox to stack content and illustration or allow internal layout */
+    flex-direction: column; /* Stacks content vertically if needed, or just sets up flex context */
+    justify-content: space-between; /* Pushes content and potentially illustration apart */
+    align-items: flex-start; /* Aligns items to the start */
+    height: auto; /* Allow height to adjust to content */
+    box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+/* Content wrapper within the CTA card */
+.cta-card-content {
+    position: relative; /* Keep relative to ensure it's on top of illustration */
+    z-index: 2; /* Ensures content is above the background illustration */
+    width: 100%; /* Take full width of parent */
+    /* Add any other specific styles for spacing content here if needed */
+}
+
+/* Heading inside the CTA card */
+.cta-card-content h3 {
+    font-size: 2.2em; /* Large, prominent heading */
+    margin-bottom: 25px; /* Space below heading before the button */
+    line-height: 1.2; /* Good line height for readability */
+    color: #ffffff; /* White text for the heading */
+}
+
+/* Button inside the CTA card */
+.btn.cta-button {
+    display: inline-block; /* Allows padding and width, and sits next to other inline elements */
+    padding: 15px 30px; /* Padding inside the button */
+    border-radius: 25px; /* Significantly rounded button corners, matching mockup */
+    font-size: 1.1em; /* Button text size */
+    font-weight: 600; /* Bold button text */
+    text-decoration: none; /* No underline */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions for hover effects */
+    background-color: #ffffff; /* White background for the button */
+    color: #006064; /* Dark teal text for the button, matching the card's background */
+    border: none; /* No border */
+    white-space: nowrap; /* Prevent button text from wrapping */
+    cursor: pointer; /* Indicates it's clickable */
+}
+
+.btn.cta-button:hover {
+    background-color: #f0f0f0; /* Slightly off-white on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    color: #004d50; /* Slightly darker teal text on hover */
+}
+
+/* Abstract Illustration within the CTA card */
+.cta-card-illustration {
+    position: absolute; /* Positions relative to the .footer-cta-card */
+    bottom: -10%; /* Adjust as needed to position the illustration lower */
+    right: -10%; /* Adjust as needed to position the illustration more to the right */
+    width: 120%; /* Make it slightly larger than the card to allow elements to extend beyond edges */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1; /* Puts it behind the .cta-card-content */
+    pointer-events: none; /* Ensures the illustration doesn't block clicks on content */
+    opacity: 0.8; /* Adjust opacity as needed; mockup looks quite vibrant */
+}
+
+.cta-card-illustration img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    object-fit: contain; 
+    object-position: bottom right; 
+    filter: brightness(1.2) saturate(1.1); 
+}
+
+/* --- Responsive Adjustments for the CTA Card --- */
+@media (max-width: 992px) {
+    .footer-cta-card {
+        min-width: unset; 
+        max-width: 95%; 
+        padding: 30px 25px; 
+    }
+    .cta-card-content h3 {
+        font-size: 1.8em; 
+        margin-bottom: 20px;
+    }
+    .btn.cta-button {
+        padding: 12px 25px; 
+        font-size: 1em; 
+    }
+    .cta-card-illustration {
+        width: 120%; 
+        right: -15%; 
+        bottom: -5%; 
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-cta-card {
+        padding: 25px 20px; 
+    }
+    .cta-card-content h3 {
+        font-size: 1.5em; 
+    }
+    .btn.cta-button {
+        padding: 10px 20px; 
+        font-size: 0.9em; 
+    }
+    .cta-card-illustration {
+        width: 150%; 
+        right: -20%; 
+        bottom: 0%;
+    }
+}
