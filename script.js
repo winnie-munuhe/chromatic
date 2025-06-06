@@ -1,5 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
- 
+
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('.main-nav');
+    const body = document.body;
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('nav-open');
+            hamburger.classList.toggle('is-active');
+
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+
+            body.classList.toggle('no-scroll');
+        });
+
+        const navLinks = document.querySelectorAll('.main-nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (navMenu.classList.contains('nav-open')) {
+                    navMenu.classList.remove('nav-open');
+                    hamburger.classList.remove('is-active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    body.classList.remove('no-scroll');
+                }
+            });
+        });
+    }
+
+
     const sliderTrack = document.querySelector('.testimonials-slider-track');
     const testimonialGroups = document.querySelectorAll('.testimonial-group');
     const prevArrow = document.querySelector('.slider-arrow.prev-arrow');
@@ -9,15 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalSlides = testimonialGroups.length;
 
     function updateSlider() {
-        if (totalSlides === 0) {
-
+        if (totalSlides === 0 || !sliderTrack) {
             if (prevArrow) prevArrow.style.display = 'none';
             if (nextArrow) nextArrow.style.display = 'none';
             return;
         }
 
-        const slideWidth = testimonialGroups[0].offsetWidth;
-
+        const slideWidth = testimonialGroups[0] ? testimonialGroups[0].offsetWidth : 0; 
+        
         sliderTrack.style.transform = `translateX(-${currentSlideIndex * slideWidth}px)`;
 
         if (prevArrow) {
@@ -46,19 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
     window.addEventListener('resize', updateSlider);
-
     updateSlider();
 
-    const currentYearSpan = document.getElementById('currentYear');
-    if (currentYearSpan) {
-        currentYearSpan.textContent = new Date().getFullYear();
-    }
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
 
     const accordionHeaders = document.querySelectorAll('.accordion-header');
 
@@ -94,18 +112,17 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('No accordion headers found. FAQ accordion will not function.');
     }
 
-});
 
-document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const formResponse = document.getElementById('formResponse');
 
     if (contactForm && formResponse) {
         contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
             formResponse.textContent = '';
-            formResponse.classList.remove('show', 'success', 'error');
+            formResponse.classList.remove('success', 'error');
+            formResponse.style.display = 'none';
 
             const emailInput = contactForm.querySelector('#email');
             const messageInput = contactForm.querySelector('#message');
@@ -115,34 +132,46 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (!email || !message) {
                 formResponse.textContent = 'Please fill in all fields.';
-                formResponse.classList.add('show', 'error');
+                formResponse.classList.add('error');
+                formResponse.style.display = 'block';
                 return;
             }
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 formResponse.textContent = 'Please enter a valid email address.';
-                formResponse.classList.add('show', 'error');
+                formResponse.classList.add('error');
+                formResponse.style.display = 'block';
                 return;
             }
 
-            setTimeout(() => { 
-                formResponse.textContent = 'Thank you! We will get back to you within 12 hours.';
-                formResponse.classList.add('show', 'success');
-                contactForm.reset();
-            }, 1000); 
+            console.log('Form submitted (simulated):');
+            console.log('Email:', email);
+            console.log('Message:', message);
 
+            setTimeout(() => {
+                formResponse.textContent = 'Thank you! We will get back to you within 12 hours.';
+                formResponse.classList.add('success');
+                formResponse.style.display = 'block';
+                contactForm.reset();
+
+                setTimeout(() => {
+                    formResponse.style.display = 'none';
+                    formResponse.textContent = '';
+                    formResponse.classList.remove('success', 'error');
+                }, 5000);
+
+            }, 1000);
         });
     } else {
-        console.warn('Contact form or response element not found. Contact form JS will not function.');
+        console.warn('Contact form or response element (ID: formResponse) not found. Contact form JS will not function.');
     }
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
 
     const currentYearSpan = document.getElementById('currentYear');
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
+    } else {
+        console.warn('Element with ID "currentYear" not found. Footer year may not update.');
     }
+
 });
